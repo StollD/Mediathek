@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaLibrary"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Mediathek" Height="500" Width="528.529">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="178*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="search" Content="{iconPacks:PackIconFontAwesome Search}" HorizontalAlignment="Left" Margin="158,11,0,0" VerticalAlignment="Top" Width="35" Height="35" Grid.Column="1"/>
+        <TextBox x:Name="searchbar" HorizontalAlignment="Left" Height="31" Margin="10,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="407" FontFamily="Calibri" FontSize="14" Foreground="#CC000000" Grid.ColumnSpan="2"/>
+        <Button x:Name="add" Content="{iconPacks:PackIconFontAwesome Plus}" HorizontalAlignment="Left" Margin="198,11,0,0" VerticalAlignment="Top" Width="34" Height="35" Grid.Column="1"/>
+        <Separator Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="30" Margin="10,39,0,0" VerticalAlignment="Top" Width="491"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="385" Margin="10,64,0,0" VerticalAlignment="Top" Width="491" Grid.ColumnSpan="2">
+            <Grid Height="385" Width="471">
+                <Rectangle Stroke="#FF000000" StrokeThickness="1" StrokeDashArray="1 4" SnapsToDevicePixels="True" Margin="10,10,10,327" RadiusX="2" RadiusY="2" />
+                <Label Content="Titel der DVD" HorizontalAlignment="Left" Margin="18,15,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Calibri" FontSize="20"/>
+                <Label Content="Videodisk" HorizontalAlignment="Left" Margin="138,23,0,0" VerticalAlignment="Top" Foreground="#B2000000" FontFamily="Calibri"/>
+                <Button x:Name="play" HorizontalAlignment="Left" Margin="331,20,0,0" VerticalAlignment="Top" Width="119" Height="28" Foreground="#FF1D8B2C" Background="#FFDDDDDD">
+                    <Grid Height="28" Width="92">
+                        <Label Content="Starten" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Height="31" Width="88" Margin="0,-3,0,0" FontFamily="Calibri" FontSize="16" Grid.RowSpan="2"/>
+                        <iconPacks:PackIconFontAwesome Kind="Play" Margin="62,2,0,0" Height="20" Width="26" Grid.RowSpan="2" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </ScrollViewer>
+
     </Grid>
 </Window>
