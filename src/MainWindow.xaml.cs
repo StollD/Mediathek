@@ -83,8 +83,6 @@ namespace MediaLibrary
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             grid.Children.Clear();
-            grid.Height = Math.Max((Directory.GetDirectories(NetworkPath).Length - 1) * 57, 385);
-            Int32[] margins = new Int32[] { 10, 10, 10, (Int32)grid.Height - 58 };
             Dictionary<String, MediaEntry> entries = new Dictionary<String, MediaEntry>();
             foreach (String dir in Directory.GetDirectories(NetworkPath))
             {
@@ -94,6 +92,8 @@ namespace MediaLibrary
                     continue;
                 entries.Add(dir, e);
             }
+            grid.Height = Math.Max((entries.Count * 57) + 10, 385);
+            Int32[] margins = new Int32[] { 10, 10, 10, (Int32)grid.Height - 58 };
             foreach (var kvP in entries.OrderBy(e => e.Value.Name))
             {
                 MediaEntry e = kvP.Value;
