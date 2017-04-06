@@ -1,0 +1,26 @@
+<policyDefinitions revision="1.0" schemaVersion="1.0">
+  <policyNamespaces>
+    <target prefix="fullarmor" namespace="FullArmor.Policies.C3577ED7_9750_4F3E_B9AB_C32AB546B700" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+  <supersededAdm fileName="" />
+  <resources minRequiredRevision="1.0" />
+  <categories>
+    <category name="CAT_1A098016_DF4C_41B4_9645_69531CAABC8F" displayName="$(string.CAT_1A098016_DF4C_41B4_9645_69531CAABC8F)" />
+  </categories>
+  <policies>
+    <policy name="POL_DF342050_929A_41C6_88EC_1CDB776B73CC" class="Machine" displayName="$(string.POL_DF342050_929A_41C6_88EC_1CDB776B73CC)" key="HKEY_LOCAL_MACHINE/SOFTWARE/HVH/MediaLibrary" valueName="NetworkPath">
+      <parentCategory ref="CAT_AC3FEFE6_414A_49B4_B2BA_7FC36BB808ED" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue />
+      <disabledValue />
+    </policy>
+    <policy name="POL_PATH" class="Machine" displayName="$(string.POL_D8ED29A8_E95E_4B76_BFE2_EF6305472AC4)" explainText="$(string.POL_D8ED29A8_E95E_4B76_BFE2_EF6305472AC4_Help)" presentation="$(presentation.POL_PATH)" key="HKEY_LOCAL_MACHINE\Software\HVH\MediaLibrary" valueName="NetworkPath">
+      <parentCategory ref="CAT_1A098016_DF4C_41B4_9645_69531CAABC8F" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <elements>
+        <text id="TXT_PATH" key="HKEY_LOCAL_MACHINE\Software\HVH\MediaLibrary" valueName="NetworkPath" required="true" />
+      </elements>
+    </policy>
+  </policies>
+</policyDefinitions>
