@@ -171,7 +171,6 @@ namespace MediaLibrary
         private void add_Click(Object sender, RoutedEventArgs e)
         {
             new AddImageWindow(this).Show();
-            ScanNetworkPath(searchbar.Text?.Trim() ?? "");
         }
     }
 

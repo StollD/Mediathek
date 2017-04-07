@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaLibrary", "src/MediaLibrary.csproj", "{874CE10E-7E0C-4FA1-B122-BE0F15918499}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaLibrary", "src\MediaLibrary.csproj", "{874CE10E-7E0C-4FA1-B122-BE0F15918499}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{552C1713-5EDA-4742-8621-E46DB69CC927}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{874CE10E-7E0C-4FA1-B122-BE0F15918499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{874CE10E-7E0C-4FA1-B122-BE0F15918499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{874CE10E-7E0C-4FA1-B122-BE0F15918499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552C1713-5EDA-4742-8621-E46DB69CC927}.Debug|Any CPU.ActiveCfg = Debug
+		{552C1713-5EDA-4742-8621-E46DB69CC927}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
