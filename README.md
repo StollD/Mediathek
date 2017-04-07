@@ -1,2 +1,2 @@
-# media-library
-A program for watching DVD's without a DVD
+# Mediathek
+Mediathek ist ein Programm, was in der Lage ist DVDs ohne DVDs abzuspielen.

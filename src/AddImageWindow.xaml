@@ -1,0 +1,30 @@
+﻿<Window x:Class="MediaLibrary.AddImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaLibrary"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Mediathek - DVD hinzufügen" Height="263.055" Width="339.999" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Quelllaufwerk:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Calibri" Height="34" Width="124" FontSize="18"/>
+        <ComboBox x:Name="sources" HorizontalAlignment="Left" Margin="139,12,0,0" VerticalAlignment="Top" Width="178" FontFamily="Calibri" Height="29" FontSize="18"/>
+        <Label Content="Titel der DVD:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="124" FontFamily="Calibri" FontSize="18"/>
+        <TextBox x:Name="title" HorizontalAlignment="Left" Height="30" Margin="139,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" FontFamily="Calibri" FontSize="18"/>
+        <Label Content="Kategorie:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" FontFamily="Calibri" Width="124" FontSize="18"/>
+        <ComboBox x:Name="category" HorizontalAlignment="Left" Margin="139,81,0,0" VerticalAlignment="Top" Width="178" FontFamily="Calibri" SelectionChanged="category_SelectionChanged" Height="32" FontSize="18"/>
+        <Label Content="Startdatei:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="124" FontFamily="Calibri" FontSize="18"/>
+        <Grid Margin="139,118,8,72">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="file_1" local:OpenFileDialogEx.Filter="Alle Dateien|*.*" Grid.Column="0" />
+            <Button x:Name="file_2" Content="{iconPacks:PackIconFontAwesome Search}" Margin="143,0,0,0" />
+        </Grid>
+        <Button x:Name="add" Content="DVD hinzufügen" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="307" Height="39" FontWeight="Bold" FontFamily="Calibri" Click="add_Click" FontSize="18"/>
+        <ProgressBar x:Name="progress" HorizontalAlignment="Left" Height="10" Margin="10,206,0,0" VerticalAlignment="Top" Width="307" Foreground="#FFB03C06"/>
+
+    </Grid>
+</Window>

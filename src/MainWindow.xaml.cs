@@ -1,24 +1,15 @@
-﻿using MahApps.Metro.IconPacks;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.IconPacks;
 
 namespace MediaLibrary
 {
@@ -28,12 +19,12 @@ namespace MediaLibrary
     public partial class MainWindow : Window
     {
         /// <summary>
-        /// The path in the network
+        /// Die Freigabe im Netzwerk, in der die DVD Images gespeichert werden.
         /// </summary>
         public static String NetworkPath { get; set; }
 
         /// <summary>
-        /// All the categories
+        /// Alle Kategorien, die genutzt werden können
         /// </summary>
         public static Dictionary<String, Category> Categories { get; set; }
 
@@ -44,11 +35,11 @@ namespace MediaLibrary
         }
 
         /// <summary>
-        /// Loads the library and the settings
+        /// Lädt die Mediathek und die dazugehörigen Einstellungen.
         /// </summary>
         public void InitMediaLibrary()
         {
-            // Load the path from the registry
+            // Den Netzwerk-Pfad aus der Registry auslesen.
 #if !DEBUG
             NetworkPath = Registry.LocalMachine.GetValue("SOFTWARE/HVH/MediaLibrary/NetworkPath", "") as String;
             if (String.IsNullOrWhiteSpace(NetworkPath))
@@ -60,14 +51,14 @@ namespace MediaLibrary
 #endif
             Categories = new Dictionary<String, Category>();
 
-            // Load the categories
+            // Kategorien laden
             LoadCategories();
 
             ScanNetworkPath("");
         }
 
         /// <summary>
-        /// Loads the categories for DVDs from the disk
+        /// Lädt die Kategorien für DVD aus der Netzwerk-Freigabe
         /// </summary>
         public void LoadCategories()
         {
@@ -79,6 +70,10 @@ namespace MediaLibrary
             }
         }
 
+        /// <summary>
+        /// Lädt alle Images aus der Netzwerkfreigabe und updated die Oberfläche entsprechend.
+        /// </summary>
+        /// <param name="pattern"></param>
         public void ScanNetworkPath(String pattern)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -89,12 +84,14 @@ namespace MediaLibrary
                 if (dir.EndsWith("categories")) continue;
                 MediaEntry e = serializer.Deserialize<MediaEntry>(File.ReadAllText(System.IO.Path.Combine(dir, "entry.json")));
                 if (pattern != "" && !Regex.IsMatch(e.Name, pattern))
+                {
                     continue;
+                }
                 entries.Add(dir, e);
             }
             grid.Height = Math.Max((entries.Count * 57) + 10, 385);
             Int32[] margins = new Int32[] { 10, 10, 10, (Int32)grid.Height - 58 };
-            foreach (var kvP in entries.OrderBy(e => e.Value.Name))
+            foreach (KeyValuePair<String, MediaEntry> kvP in entries.OrderBy(e => e.Value.Name))
             {
                 MediaEntry e = kvP.Value;
                 String dir = kvP.Key;
@@ -168,7 +165,13 @@ namespace MediaLibrary
 
         private void search_Click(Object sender, RoutedEventArgs e)
         {
-            ScanNetworkPath(searchbar.Text ?? "");
+            ScanNetworkPath(searchbar.Text?.Trim() ?? "");
+        }
+
+        private void add_Click(Object sender, RoutedEventArgs e)
+        {
+            new AddImageWindow(this).Show();
+            ScanNetworkPath(searchbar.Text?.Trim() ?? "");
         }
     }
 

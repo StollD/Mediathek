@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="search" Content="{iconPacks:PackIconFontAwesome Search}" HorizontalAlignment="Left" Margin="158,11,0,0" VerticalAlignment="Top" Width="35" Height="35" Grid.Column="1" Click="search_Click"/>
         <TextBox x:Name="searchbar" HorizontalAlignment="Left" Height="35" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="407" FontFamily="Calibri" FontSize="24" Foreground="#CC000000" Grid.ColumnSpan="2"/>
-        <Button x:Name="add" Content="{iconPacks:PackIconFontAwesome Plus}" HorizontalAlignment="Left" Margin="198,11,0,0" VerticalAlignment="Top" Width="34" Height="35" Grid.Column="1"/>
+        <Button x:Name="add" Content="{iconPacks:PackIconFontAwesome Plus}" HorizontalAlignment="Left" Margin="198,11,0,0" VerticalAlignment="Top" Width="34" Height="35" Grid.Column="1" Click="add_Click"/>
         <Separator Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="30" Margin="10,39,0,0" VerticalAlignment="Top" Width="491"/>
         <ScrollViewer HorizontalAlignment="Left" Height="385" Margin="10,64,0,0" VerticalAlignment="Top" Width="491" Grid.ColumnSpan="2">
             <Grid x:Name="grid" Height="385" Width="471">
