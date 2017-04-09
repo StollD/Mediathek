@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace MediaLibrary
         {
             InitializeComponent();
             InitMediaLibrary();
+            Closing += delegate (Object sender, CancelEventArgs e) { e.Cancel = addImageWindow?.runner != null; addImageWindow?.Close(); };
         }
 
         /// <summary>
@@ -168,9 +170,19 @@ namespace MediaLibrary
             ScanNetworkPath(searchbar.Text?.Trim() ?? "");
         }
 
+        private AddImageWindow addImageWindow;
+
         private void add_Click(Object sender, RoutedEventArgs e)
         {
-            new AddImageWindow(this).Show();
+            if (addImageWindow == null)
+            {
+                addImageWindow = new AddImageWindow(this);
+                addImageWindow.Show();
+            }
+            else
+            {
+                addImageWindow.Focus();
+            }
         }
     }
 

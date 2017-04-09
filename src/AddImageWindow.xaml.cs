@@ -23,6 +23,7 @@ namespace MediaLibrary
         {
             InitializeComponent();
             Closing += delegate (Object sender, CancelEventArgs e) { e.Cancel = runner != null; };
+            file_1.IsEnabled = file_2.IsEnabled = false;
 
             // CD Laufwerke erfassen
             List<String> sources_values = new List<String>();
@@ -69,14 +70,18 @@ namespace MediaLibrary
             }
         }
 
-        private Task runner;
+        public Task runner;
 
         /// <summary>
         /// Die DVD hinzufügen.
         /// </summary>
         private async void add_Click(Object sender, RoutedEventArgs e)
         {
-            String volumename = sources.Text.Split('[')[0].Trim();
+            if (sources.SelectedValue == null || String.IsNullOrWhiteSpace(title.Text) || category.SelectedValue == null || String.IsNullOrWhiteSpace(file_1.Text))
+            {
+                return;
+            }
+            String volumename = sources.SelectedValue.ToString().Split('[')[0].Trim();
             progress.IsEnabled = true;
             progress.IsIndeterminate = true;
             sources.IsEnabled = false;

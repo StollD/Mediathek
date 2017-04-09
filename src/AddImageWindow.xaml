@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="file_1" local:OpenFileDialogEx.Filter="Alle Dateien|*.*" Grid.Column="0" />
+            <TextBox x:Name="file_1" local:OpenFileDialogEx.Filter="Alle Dateien|*.*" Grid.Column="0" Margin="0,0,34,0" FontSize="18" />
             <Button x:Name="file_2" Content="{iconPacks:PackIconFontAwesome Search}" Margin="143,0,0,0" />
         </Grid>
         <Button x:Name="add" Content="DVD hinzufügen" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="307" Height="39" FontWeight="Bold" FontFamily="Calibri" Click="add_Click" FontSize="18"/>
