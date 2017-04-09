@@ -85,7 +85,7 @@ namespace MediaLibrary
             file_1.IsEnabled = false;
             file_2.IsEnabled = false;
             add.IsEnabled = false;
-            runner = AddDVD(volumename, title.Text, category.SelectedValue.ToString(), file_1.Text);
+            runner = AddDVD(volumename, title.Text, category.SelectedValue.ToString(), Path.GetFileName(file_1.Text));
             await runner;
             runner = null;
             Close();
