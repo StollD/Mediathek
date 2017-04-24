@@ -5,23 +5,17 @@
   </description>
   <resources>
     <stringTable>
-      <string id="CAT_1A098016_DF4C_41B4_9645_69531CAABC8F">Media Library</string>
-      <string id="POL_D8ED29A8_E95E_4B76_BFE2_EF6305472AC4">Path</string>
-      <string id="POL_D8ED29A8_E95E_4B76_BFE2_EF6305472AC4_Help">The network share where the DVD images are saved.</string>
+      <string id="CAT_MEDIA">Media Library</string>
+      <string id="POL_PATH_NAME">Path</string>
+      <string id="POL_PATH_EXPL">The network share where the DVD images are saved.</string>
+      <string id="supported">Microsoft Windows</string>
     </stringTable>
     <presentationTable>
       <presentation id="POL_PATH">
-        <text>
-        </text>
-        <text>
-        </text>
         <textBox refId="TXT_PATH">
           <label>Network path</label>
-          <defaultValue>
-          </defaultValue>
+          <defaultValue></defaultValue>
         </textBox>
-        <text>
-        </text>
       </presentation>
     </presentationTable>
   </resources>

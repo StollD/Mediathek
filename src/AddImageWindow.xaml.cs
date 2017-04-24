@@ -22,6 +22,7 @@ namespace MediaLibrary
         public AddImageWindow(MainWindow main)
         {
             InitializeComponent();
+            Main = main;
             Closing += delegate (Object sender, CancelEventArgs e) { e.Cancel = runner != null; };
             file_1.IsEnabled = file_2.IsEnabled = false;
 
@@ -122,7 +123,7 @@ namespace MediaLibrary
         {
             String[] directories = Directory.GetDirectories(SourcePath, "*.*", SearchOption.AllDirectories);
 
-            foreach (String dirPath in directories) 
+            foreach (String dirPath in directories)
             {
                 Directory.CreateDirectory(dirPath.Replace(SourcePath, DestinationPath));
             }

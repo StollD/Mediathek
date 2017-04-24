@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using MahApps.Metro.IconPacks;
+using Microsoft.Win32;
 
 namespace MediaLibrary
 {
@@ -43,7 +44,7 @@ namespace MediaLibrary
         {
             // Den Netzwerk-Pfad aus der Registry auslesen.
 #if !DEBUG
-            NetworkPath = Registry.LocalMachine.GetValue("SOFTWARE/HVH/MediaLibrary/NetworkPath", "") as String;
+            NetworkPath = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\HVH\Mediathek", "NetworkPath", "") as String;
             if (String.IsNullOrWhiteSpace(NetworkPath))
             {
                 throw new ArgumentNullException("NetworkPath");
@@ -121,7 +122,7 @@ namespace MediaLibrary
                 {
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(331, margins[1] + 10, 0, 0),
-                    VerticalAlignment = VerticalAlignment.Top, 
+                    VerticalAlignment = VerticalAlignment.Top,
                     Width = 119,
                     Height = 28,
                     Background = new SolidColorBrush(Color.FromArgb(255, 221, 221, 221)),
