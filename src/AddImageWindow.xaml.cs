@@ -42,32 +42,39 @@ namespace MediaLibrary
             {
                 sources.IsEnabled = false;
                 title.IsEnabled = false;
-                category.IsEnabled = false;
+                type.IsEnabled = false;
                 file_1.IsEnabled = false;
                 file_2.IsEnabled = false;
                 add.IsEnabled = false;
                 progress.IsEnabled = false;
+                categories.IsEnabled = false;
             }
 
             // Kategorien erfassen
-            List<String> category_values = new List<String>();
-            foreach (Category c in MainWindow.Categories.Values)
+            List<String> temp = MainWindow.Categories.ToList();
+            temp.Insert(0, "Alle");
+            categories.ItemsSource = temp;
+
+            // Typen erfassen
+            List<String> type_values = new List<String>();
+            foreach (DiskType c in MainWindow.Types.Values)
             {
-                category_values.Add(c.Name);
+                type_values.Add(c.Name);
             }
-            if (category_values.Any())
+            if (type_values.Any())
             {
-                category.ItemsSource = category_values;
+                type.ItemsSource = type_values;
             }
             else
             {
                 sources.IsEnabled = false;
                 title.IsEnabled = false;
-                category.IsEnabled = false;
+                type.IsEnabled = false;
                 file_1.IsEnabled = false;
                 file_2.IsEnabled = false;
                 add.IsEnabled = false;
                 progress.IsEnabled = false;
+                categories.IsEnabled = false;
             }
         }
 
@@ -78,7 +85,7 @@ namespace MediaLibrary
         /// </summary>
         private async void add_Click(Object sender, RoutedEventArgs e)
         {
-            if (sources.SelectedValue == null || String.IsNullOrWhiteSpace(title.Text) || category.SelectedValue == null || String.IsNullOrWhiteSpace(file_1.Text))
+            if (sources.SelectedValue == null || String.IsNullOrWhiteSpace(title.Text) || type.SelectedValue == null || String.IsNullOrWhiteSpace(file_1.Text) || categories.SelectedValue == null)
             {
                 return;
             }
@@ -87,18 +94,19 @@ namespace MediaLibrary
             progress.IsIndeterminate = true;
             sources.IsEnabled = false;
             title.IsEnabled = false;
-            category.IsEnabled = false;
+            type.IsEnabled = false;
             file_1.IsEnabled = false;
             file_2.IsEnabled = false;
+            categories.IsEnabled = false;
             add.IsEnabled = false;
-            runner = AddDVD(volumename, title.Text, category.SelectedValue.ToString(), Path.GetFileName(file_1.Text));
+            runner = AddDVD(volumename, title.Text, type.SelectedValue.ToString(), categories.SelectedValue.ToString(), Path.GetFileName(file_1.Text));
             await runner;
             runner = null;
             Close();
-            Main.ScanNetworkPath(Main.searchbar.Text?.Trim() ?? "");
+            Main.ScanNetworkPath(Main.categories.SelectedValue?.ToString() ?? "Alle", Main.searchbar.Text?.Trim() ?? "");
         }
 
-        private async Task AddDVD(String volumename, String dvdtitle, String category, String file)
+        private async Task AddDVD(String volumename, String dvdtitle, String type, String category, String file)
         {
             await Task.Run(() =>
             {
@@ -106,12 +114,12 @@ namespace MediaLibrary
                 String dir = Path.Combine(MainWindow.NetworkPath, ID.ToString());
                 Directory.CreateDirectory(dir);
 
-                // Kategorie herausfinden
-                KeyValuePair<String, Category> c = MainWindow.Categories.First(cat => cat.Value.Name == category);
+                // Typ herausfinden
+                KeyValuePair<String, DiskType> c = MainWindow.Types.First(cat => cat.Value.Name == type);
 
                 // Entry Datei schreiben
                 File.WriteAllText(Path.Combine(dir, "entry.json"),
-                    "{\n    \"Name\": \"" + dvdtitle + "\",\n    \"Category\": \"" + c.Key + "\",\n    \"File\": \"" + (c.Value.Command.Contains("{1}") ? file : "") + "\"\n}");
+                    "{\n    \"Name\": \"" + dvdtitle + "\",\n    \"Type\": \"" + c.Key + "\",\n    \"File\": \"" + (c.Value.Command.Contains("{1}") ? file : "") + "\",\n    \"Category\": \"" + category + "\"\n}");
 
                 // DVD Kopieren
                 DriveInfo info = DriveInfo.GetDrives().First(d => d.VolumeLabel == volumename);
@@ -136,11 +144,16 @@ namespace MediaLibrary
             }
         }
 
-        private void category_SelectionChanged(Object sender, SelectionChangedEventArgs e)
+        private void type_SelectionChanged(Object sender, SelectionChangedEventArgs e)
         {
             // Kategorie herausfinden
-            KeyValuePair<String, Category> c = MainWindow.Categories.First(cat => cat.Value.Name == category.SelectedValue.ToString());
+            KeyValuePair<String, DiskType> c = MainWindow.Types.First(cat => cat.Value.Name == type.SelectedValue.ToString());
             file_1.IsEnabled = file_2.IsEnabled = c.Value.Command.Contains("{1}");
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Main.addImageWindow = null;
         }
     }
 }

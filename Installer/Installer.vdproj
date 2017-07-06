@@ -27,7 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B712E6030CBA8D289720D010C4B2A04D"
+        "MsmKey" = "8:_868EDF2839FED342830039393A25E422"
         "OwnerKey" = "8:_5CC750F3AFA04CDE9A3387C6B1A82E3A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -40,19 +40,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E3437606633E8A43B8C1BF2D25C2E9DB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5CC750F3AFA04CDE9A3387C6B1A82E3A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B712E6030CBA8D289720D010C4B2A04D"
+        "OwnerKey" = "8:_868EDF2839FED342830039393A25E422"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E3437606633E8A43B8C1BF2D25C2E9DB"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -73,6 +73,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -89,6 +105,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -120,7 +152,7 @@
         {
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_65CC56A9C3304566A0B437629EBF8531"
             {
-            "SourcePath" = "8:..\\src\\dvd.ico"
+            "SourcePath" = "8:\\\\192.168.24.10\\Admins$\\Dokumente\\GitHub\\Mediathek\\src\\dvd.ico"
             "TargetName" = "8:dvd.ico"
             "Tag" = "8:"
             "Folder" = "8:_2B006ADE691D4819A7440F9AB17A43A7"
@@ -138,14 +170,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B712E6030CBA8D289720D010C4B2A04D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_868EDF2839FED342830039393A25E422"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:MahApps.Metro.IconPacks.FontAwesome, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B712E6030CBA8D289720D010C4B2A04D"
+                    "_868EDF2839FED342830039393A25E422"
                     {
                     "Name" = "8:MahApps.Metro.IconPacks.FontAwesome.dll"
                     "Attributes" = "3:512"
@@ -256,15 +288,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mediathek"
-        "ProductCode" = "8:{EE666239-C7FD-4F7D-83AB-0A8F1FC981D0}"
-        "PackageCode" = "8:{7B073CEA-C3AF-4DD9-95DC-9F5338C20A59}"
+        "ProductCode" = "8:{5259A52A-AB05-4ACB-A64A-A27EBDA7C0EF}"
+        "PackageCode" = "8:{D6324C9C-7C8E-4235-97ED-3BC62230C24A}"
         "UpgradeCode" = "8:{AA97E7F5-9880-41BA-992F-F01375799FF1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:HVH"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -806,7 +838,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5CC750F3AFA04CDE9A3387C6B1A82E3A"
             {
-            "SourcePath" = "8:..\\src\\obj\\Debug\\MediaLibrary.exe"
+            "SourcePath" = "8:\\\\192.168.24.10\\Admins$\\Dokumente\\GitHub\\Mediathek\\src\\obj\\Release\\MediaLibrary.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2B006ADE691D4819A7440F9AB17A43A7"

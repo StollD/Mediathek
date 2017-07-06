@@ -26,9 +26,14 @@ namespace MediaLibrary
         public static String NetworkPath { get; set; }
 
         /// <summary>
-        /// Alle Kategorien, die genutzt werden können
+        /// Alle Disktypen, die genutzt werden können
         /// </summary>
-        public static Dictionary<String, Category> Categories { get; set; }
+        public static Dictionary<String, DiskType> Types { get; set; }
+
+        /// <summary>
+        /// Alle Kategorien die genutzt werden können
+        /// </summary>
+        public static List<String> Categories { get; set; }
 
         public MainWindow()
         {
@@ -52,41 +57,49 @@ namespace MediaLibrary
 #else
             NetworkPath = "C:\\MediaLibrary\\";
 #endif
-            Categories = new Dictionary<String, Category>();
+            Types = new Dictionary<String, DiskType>();
 
             // Kategorien laden
             LoadCategories();
 
-            ScanNetworkPath("");
+            ScanNetworkPath("Alle", "");
         }
 
         /// <summary>
-        /// Lädt die Kategorien für DVD aus der Netzwerk-Freigabe
+        /// Lädt die Kategorien und Typen für DVDs aus der Netzwerk-Freigabe
         /// </summary>
         public void LoadCategories()
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            foreach (String file in Directory.GetFiles(System.IO.Path.Combine(NetworkPath, "categories"), "*.json"))
+            foreach (String file in Directory.GetFiles(System.IO.Path.Combine(NetworkPath, "types"), "*.json"))
             {
-                Category c = serializer.Deserialize<Category>(File.ReadAllText(file));
-                Categories.Add(System.IO.Path.GetFileNameWithoutExtension(file), c);
+                DiskType c = serializer.Deserialize<DiskType>(File.ReadAllText(file));
+                Types.Add(System.IO.Path.GetFileNameWithoutExtension(file), c);
             }
+            Categories = serializer.Deserialize<List<String>>(File.ReadAllText(System.IO.Path.Combine(NetworkPath, "categories.json")));
+            List<String> temp = Categories.ToList();
+            temp.Insert(0, "Alle");
+            categories.ItemsSource = temp;
         }
 
         /// <summary>
         /// Lädt alle Images aus der Netzwerkfreigabe und updated die Oberfläche entsprechend.
         /// </summary>
         /// <param name="pattern"></param>
-        public void ScanNetworkPath(String pattern)
+        public void ScanNetworkPath(String category, String pattern)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             grid.Children.Clear();
             Dictionary<String, MediaEntry> entries = new Dictionary<String, MediaEntry>();
             foreach (String dir in Directory.GetDirectories(NetworkPath))
             {
-                if (dir.EndsWith("categories")) continue;
+                if (dir.EndsWith("types")) continue;
                 MediaEntry e = serializer.Deserialize<MediaEntry>(File.ReadAllText(System.IO.Path.Combine(dir, "entry.json")));
-                if (pattern != "" && !Regex.IsMatch(e.Name, pattern))
+                if (pattern != "" && !Regex.IsMatch(e.Name, pattern, RegexOptions.IgnoreCase))
+                {
+                    continue;
+                }
+                if (category != "Alle" && e.Category != category)
                 {
                     continue;
                 }
@@ -110,7 +123,7 @@ namespace MediaLibrary
                 });
                 grid.Children.Add(new Label()
                 {
-                    Content = e.Name,
+                    Content = "[" + e.Category + "] " + e.Name,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(18, margins[1] + 5, 0, 0),
                     VerticalAlignment = VerticalAlignment.Top,
@@ -157,7 +170,7 @@ namespace MediaLibrary
                 play.Click += delegate
                 {
                     // Execute the stored command
-                    Categories[e.Category].Execute(dir, e.File);
+                    Types[e.Type].Execute(dir, e.File);
                 };
 
                 grid.Children.Add(play);
@@ -168,10 +181,10 @@ namespace MediaLibrary
 
         private void search_Click(Object sender, RoutedEventArgs e)
         {
-            ScanNetworkPath(searchbar.Text?.Trim() ?? "");
+            ScanNetworkPath(categories.SelectedValue.ToString(), searchbar.Text?.Trim() ?? "");
         }
 
-        private AddImageWindow addImageWindow;
+        public AddImageWindow addImageWindow;
 
         private void add_Click(Object sender, RoutedEventArgs e)
         {
@@ -185,16 +198,22 @@ namespace MediaLibrary
                 addImageWindow.Focus();
             }
         }
+
+        private void categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ScanNetworkPath(categories.SelectedValue.ToString(), "");
+        }
     }
 
     public struct MediaEntry
     {
         public String Name { get; set; }
+        public String Type { get; set; }
         public String Category { get; set; }
         public String File { get; set; }
     }
 
-    public class Category
+    public class DiskType
     {
         public String Name { get; set; }
         public String Command { get; set; }
