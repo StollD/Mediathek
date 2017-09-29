@@ -1,0 +1,22 @@
+<policyDefinitionResources revision="1.0" schemaVersion="1.0">
+  <displayName>
+  </displayName>
+  <description>
+  </description>
+  <resources>
+    <stringTable>
+      <string id="CAT_88AC4059_2863_4A60_907D_0697963C2DD7">Mediathek</string>
+      <string id="POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050">Network Path</string>
+      <string id="POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050_Help">The path of the network share where the media should be stored</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050">
+        <textBox refId="TXT_B81E7736_E2EE_4D69_BC17_CC705BC57B32">
+          <label>path</label>
+          <defaultValue>
+          </defaultValue>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

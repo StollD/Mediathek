@@ -40,13 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5CC750F3AFA04CDE9A3387C6B1A82E3A"
+        "OwnerKey" = "8:_868EDF2839FED342830039393A25E422"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_868EDF2839FED342830039393A25E422"
+        "OwnerKey" = "8:_5CC750F3AFA04CDE9A3387C6B1A82E3A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -288,15 +288,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mediathek"
-        "ProductCode" = "8:{5259A52A-AB05-4ACB-A64A-A27EBDA7C0EF}"
-        "PackageCode" = "8:{D6324C9C-7C8E-4235-97ED-3BC62230C24A}"
+        "ProductCode" = "8:{A009C9F0-E503-4EB2-909D-49AEB44BD5C4}"
+        "PackageCode" = "8:{87F24E26-8CB5-4C35-B27E-A9C787393421}"
         "UpgradeCode" = "8:{AA97E7F5-9880-41BA-992F-F01375799FF1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.2.0"
         "Manufacturer" = "8:HVH"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

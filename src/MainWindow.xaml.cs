@@ -50,7 +50,7 @@ namespace MediaLibrary
         {
             // Den Netzwerk-Pfad aus der Registry auslesen.
 #if !DEBUG
-            NetworkPath = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\HVH\Mediathek", "NetworkPath", "") as String;
+            NetworkPath = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mediathek", "NetworkPath", "") as String;
             if (String.IsNullOrWhiteSpace(NetworkPath))
             {
                 throw new ArgumentNullException("NetworkPath");
