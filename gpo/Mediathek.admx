@@ -9,11 +9,11 @@
     <category name="CAT_88AC4059_2863_4A60_907D_0697963C2DD7" displayName="$(string.CAT_88AC4059_2863_4A60_907D_0697963C2DD7)" />
   </categories>
   <policies>
-    <policy name="POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050" class="Machine" displayName="$(string.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050)" explainText="$(string.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050_Help)" presentation="$(presentation.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050)" key="SOFTWARE\Policies\HVH\Mediathek" valueName="NetworkPathMode">
+    <policy name="POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050" class="Machine" displayName="$(string.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050)" explainText="$(string.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050_Help)" presentation="$(presentation.POL_CEF6A7D3_E9E3_4672_AB72_ABFDF0397050)" key="SOFTWARE\Policies\Mediathek" valueName="NetworkPathMode">
       <parentCategory ref="CAT_88AC4059_2863_4A60_907D_0697963C2DD7" />
       <supportedOn ref="windows:SUPPORTED_WindowsVista" />
       <elements>
-        <text id="TXT_B81E7736_E2EE_4D69_BC17_CC705BC57B32" key="SOFTWARE\Policies\HVH\Mediathek" valueName="NetworkPath" required="true" />
+        <text id="TXT_B81E7736_E2EE_4D69_BC17_CC705BC57B32" key="SOFTWARE\Policies\Mediathek" valueName="NetworkPath" required="true" />
       </elements>
     </policy>
   </policies>
