@@ -227,7 +227,7 @@ namespace MediaLibrary
             CommandLineParser parser = new CommandLineParser();
             String[] args = parser.Parse((Command.Contains("{1}") ? String.Format(Command, dir, file) : String.Format(Command, dir))).ToArray();
             startInfo.FileName = args[0];
-            startInfo.Arguments = String.Join(" ", args.Take(1));
+            startInfo.Arguments = String.Join(" ", args.Skip(1));
             process.StartInfo = startInfo;
             process.Start();
         }
