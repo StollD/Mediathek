@@ -218,6 +218,7 @@ namespace MediaLibrary
     {
         public String Name { get; set; }
         public String Command { get; set; }
+        public String Arguments { get; set; }
 
         public void Execute(String dir, String file)
         {
@@ -225,9 +226,10 @@ namespace MediaLibrary
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             CommandLineParser parser = new CommandLineParser();
-            String[] args = parser.Parse((Command.Contains("{1}") ? String.Format(Command, dir, file) : String.Format(Command, dir))).ToArray();
-            startInfo.FileName = args[0];
-            startInfo.Arguments = String.Join(" ", args.Skip(1));
+            String command = Command.Replace("{file}", file).Replace("{dir}", dir);
+            String args = Arguments.Replace("{file}", file).Replace("{dir}", dir);
+            startInfo.FileName = command;
+            startInfo.Arguments = args;
             process.StartInfo = startInfo;
             process.Start();
         }
